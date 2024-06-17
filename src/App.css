@@ -1,0 +1,23 @@
+iframe {
+  flex: 1;
+  width: 100%;
+  align-self: stretch;
+  border:none;
+}
+
+.debugger {
+  padding: 1rem;
+  width: 300px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.q,
+.item {
+  resize: none;
+  padding: 0.25rem;
+  white-space: pre;
+  flex: 1;
+}
