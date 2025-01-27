@@ -24,25 +24,25 @@ export const Builder = React.forwardRef<HTMLIFrameElement, Props>(
 
     React.useEffect(() => {
       const handleMessage = (event: MessageEvent) => {
-        if (event.data.type === "aidbox-forms/questionnaire") {
+        if (event.data.type === "from-aidbox-forms/questionnaire") {
           onChange(event.data.data);
         }
 
-        if (event.data.type === "aidbox-forms/selected-item") {
+        if (event.data.type === "from-aidbox-forms/selected-item") {
           if (onSelect) {
             onSelect(event.data.data);
           }
         }
 
-        if (event.data.type === "aidbox-forms/ready") {
+        if (event.data.type === "from-aidbox-forms/ready") {
           if (onReady) {
             onReady();
           }
           if (iframeRef.current && value) {
             console.log(iframeRef.current.contentWindow);
-            iframeRef.current.contentWindow?.postMessage(
+	    iframeRef.current.contentWindow?.postMessage(
               {
-                type: "aidbox-forms/questionnaire",
+                type: "to-aidbox-forms/questionnaire",
                 data: value,
               },
               "*",
@@ -58,7 +58,7 @@ export const Builder = React.forwardRef<HTMLIFrameElement, Props>(
       if (iframeRef.current && value) {
         iframeRef.current.contentWindow?.postMessage(
           {
-            type: "aidbox-forms/questionnaire",
+            type: "to-aidbox-forms/questionnaire",
             data: value,
           },
           "*",
@@ -79,7 +79,7 @@ export const Builder = React.forwardRef<HTMLIFrameElement, Props>(
           }
         }}
         {...restProps}
-        src={(baseUrl || defaultBaseUrl) + "/ui/sdc#/forms/builder?mode=embed"}
+        src={(baseUrl || defaultBaseUrl) + "/ui/sdc#/forms/builder?f=24058123"}
       />
     );
   },
